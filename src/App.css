@@ -118,3 +118,47 @@ button:hover {
 .popup-link:hover {
   background-color: #1f94b8;
 }
+
+/* App.css */
+
+.car-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.map-container-small {
+  width: 100%;
+  max-width: 600px;
+  margin: 20px 0;
+}
+
+.back-button {
+  align-self: flex-start;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #444444;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #555555;
+}
+
+.log-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #3ebce6;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.log-button:hover {
+  background-color: #1f94b8;
+}
