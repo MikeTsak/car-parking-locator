@@ -1,9 +1,10 @@
 // App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import MainPage from "./MainPage";
 import CarPage from "./CarPage";
 
+// App.js
 const App = () => {
   return (
     <Router>
@@ -16,5 +17,6 @@ const App = () => {
     </Router>
   );
 };
+
 
 export default App;
