@@ -19,8 +19,6 @@ const RecenterMap = ({ location }) => {
 const App = () => {
   const [carLocations, setCarLocations] = useState({});
   const [myLocation, setMyLocation] = useState(null); // Live location state
-  const [recenter, setRecenter] = useState(false); // State to trigger recentering
-
   const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${process.env.REACT_APP_JSONBIN_BIN_ID}`;
 
   const carColors = {
@@ -142,53 +140,47 @@ const App = () => {
         </button>
       </div>
       <div className="map-container">
-        <MapContainer center={[37.987, 23.671]} zoom={15} style={{ height: "100%", width: "100%" }}>
-          <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-            attribution='&copy; <a href="https://carto.com/">CARTO</a>'
-          />
-          {myLocation && (
-            <>
-              <Marker position={myLocation} icon={userIcon}>
-                <Popup>You are here</Popup>
-              </Marker>
-              <RecenterMap location={myLocation} recenter={recenter} />
-            </>
-          )}
-          {Object.entries(carLocations).map(([car, location]) => (
-            <Marker
-              key={car}
-              position={[location.lat, location.lng]}
-              icon={getIcon(carColors[car])}
+  <MapContainer center={[37.987, 23.671]} zoom={15} style={{ height: "100%", width: "100%" }}>
+    <TileLayer
+      url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+      attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+    />
+    {myLocation && (
+      <>
+        <Marker position={myLocation} icon={userIcon}>
+          <Popup>You are here</Popup>
+        </Marker>
+        <RecenterMap location={myLocation} />
+      </>
+    )}
+    {Object.entries(carLocations).map(([car, location]) => (
+      <Marker
+        key={car}
+        position={[location.lat, location.lng]}
+        icon={getIcon(carColors[car])}
+      >
+        <Popup>
+          <div className="popup-content">
+            <strong>{car}</strong>
+            <br />
+            <a
+              href={`https://www.google.com/maps?q=${location.lat},${location.lng}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="popup-link"
             >
-              <Popup>
-                <div className="popup-content">
-                  <strong>{car}</strong>
-                  <br />
-                  <a
-                    href={`https://www.google.com/maps?q=${location.lat},${location.lng}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="popup-link"
-                  >
-                    Navigate
-                  </a>
-                </div>
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
-        <button
-          id="btn-recenter"
-          onClick={() => setRecenter((prev) => !prev)} // Toggle recenter to trigger effect
-          className="recenter-button"
-        >
-          <i className="fa fa-crosshairs" />
-        </button>
-      </div>
+              Navigate
+            </a>
+          </div>
+        </Popup>
+      </Marker>
+    ))}
+  </MapContainer>
+
+</div>
+
     </div>
   );
 };
-
 
 export default App;
