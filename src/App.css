@@ -47,6 +47,18 @@ button {
   transition: transform 0.2s, background-color 0.2s;
 }
 
+.car-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.car-logo {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
 button img {
   width: 20px;
   height: 20px;

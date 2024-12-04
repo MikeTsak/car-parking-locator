@@ -1,0 +1,107 @@
+/* NotFoundPage.css */
+
+/* Container Styles */
+.not-found-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #121212;
+    color: #ffffff;
+  }
+  
+  .not-found-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .not-found-page p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .home-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #3ebce6;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .home-button:hover {
+    background-color: #1f94b8;
+  }
+  
+  /* Car Animation Styles */
+  .car-animation {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  .road {
+    width: 100%;
+    height: 5px;
+    background-color: #444;
+    position: absolute;
+    bottom: 20px;
+  }
+  
+  .car {
+    width: 100px;
+    position: absolute;
+    bottom: 25px;
+    left: -150px;
+    animation: drive 5s linear infinite;
+  }
+  
+  .car-body {
+    width: 100px;
+    height: 50px;
+    background-color: #eb4034;
+    border-radius: 10px 10px 5px 5px;
+    position: relative;
+  }
+  
+  .light {
+    width: 10px;
+    height: 10px;
+    background-color: #ffff00;
+    border-radius: 50%;
+    position: absolute;
+    right: -5px;
+    top: 20px;
+  }
+  
+  .wheel {
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+  }
+  
+  .wheel-front {
+    left: 15px;
+  }
+  
+  .wheel-back {
+    right: 15px;
+  }
+  
+  @keyframes drive {
+    0% {
+      left: -150px;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  

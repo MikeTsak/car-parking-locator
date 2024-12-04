@@ -8,6 +8,14 @@ import "leaflet/dist/leaflet.css";
 import "font-awesome/css/font-awesome.min.css"; // Import Font Awesome
 import "./App.css";
 
+// Map car types to their corresponding logos
+const carLogos = {
+  Aygo: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Toyota_EU.svg",
+  Almera:
+    "https://www.logo.wine/a/logo/Nissan_Motor_India_Private_Limited/Nissan_Motor_India_Private_Limited-Logo.wine.svg",
+  ASX: "https://www.logo.wine/a/logo/Mitsubishi/Mitsubishi-Logo.wine.svg",
+};
+
 const CarPage = ({ carType }) => {
   const [myLocation, setMyLocation] = useState(null);
   const navigate = useNavigate();
@@ -31,7 +39,7 @@ const CarPage = ({ carType }) => {
           // Fetch current data
           const response = await axios.get(JSONBIN_URL, {
             headers: {
-              "X-Master-Key": "$2b$10$UZ0nh9zAcCgQh0i" + process.env.REACT_APP_JSONBIN_API_KEY,
+              "X-Master-Key": process.env.REACT_APP_JSONBIN_API_KEY,
             },
           });
           const updatedLocations = {
@@ -43,7 +51,7 @@ const CarPage = ({ carType }) => {
           await axios.put(JSONBIN_URL, updatedLocations, {
             headers: {
               "Content-Type": "application/json",
-              "X-Master-Key": "$2b$10$UZ0nh9zAcCgQh0i" + process.env.REACT_APP_JSONBIN_API_KEY,
+              "X-Master-Key": process.env.REACT_APP_JSONBIN_API_KEY,
             },
           });
           alert(`${carType} location updated.`);
@@ -84,7 +92,10 @@ const CarPage = ({ carType }) => {
       <button onClick={() => navigate(-1)} className="back-button">
         Back
       </button>
-      <h2>{carType} Location</h2>
+      <div className="car-header">
+        <img src={carLogos[carType]} alt={`${carType} Logo`} className="car-logo" />
+        <h2>{carType} Location</h2>
+      </div>
       <div className="map-container-small">
         {myLocation ? (
           <MapContainer
